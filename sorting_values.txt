@@ -1,0 +1,31 @@
+# Python program to sort  
+# one list using 
+# the other list 
+  
+def sort_list(list1, list2): 
+  
+    zipped_pairs = zip(list2, list1) 
+  
+    z = [x for _, x in sorted(zipped_pairs)] 
+      
+    return z 
+      
+  
+# driver code 
+x = ["a", "b", "c", "d", "e", "f", "g", "h", "i"] 
+y = [ 0,   1,   1,    0,   1,   2,   2,   0,   1] 
+  
+print(sort_list(x, y)) 
+  
+x = ["g", "e", "e", "k", "s", "f", "o", "r", "g", "e", "e", "k", "s"] 
+y = [ 0,   1,   1,    0,   1,   2,   2,   0,   1] 
+  
+print(sort_list(x, y)) 
+Output:
+
+['a', 'd', 'h', 'b', 'c', 'e', 'i', 'f', 'g']
+['g', 'k', 'r', 'e', 'e', 'g', 's', 'f', 'o']
+In the above code, we have two lists, first list is being sorted with respect to the values of second list.
+
+y = [ 0,   1,   1,    0,   1,   2,   2,   0,   1]
+Here first the lowest value are checked.Like in this list, 0 is lowest, so starting from first index, 0 is lowest and it is at index 0. So value of index 0 is stored at index 0 in the first list. Similarly, 0 is again found at index 3 and so value of index 3 in first list is index 1. The same goes until the list is not completed.
