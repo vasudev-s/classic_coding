@@ -1,0 +1,52 @@
+// C++ program to find kth most frequent 
+// character in a string 
+#include <bits/stdc++.h> 
+using namespace std; 
+
+// Used for sorting by frequency. 
+bool sortByVal(const pair<char, int>& a, 
+			const pair<char, int>& b) 
+{ 
+	return a.second > b.second; 
+} 
+
+// function to sort elements by frequency 
+char sortByFreq(string str, int k) 
+{ 
+	// Store frequencies of characters 
+	unordered_map<char, int> m; 
+	for (int i = 0; i < str.length(); ++i) 
+		m[str[i]]++; 
+
+	// Copy map to vector 
+	vector<pair<char, int> > v; 
+	copy(m.begin(), m.end(), back_inserter(v)); 
+
+	// Sort the element of array by frequency 
+	sort(v.begin(), v.end(), sortByVal); 
+
+	// Find k-th most frequent item. Please note 
+	// that we need to consider only distinct 
+	int count = 0; 
+	for (int i = 0; i < v.size(); i++) { 
+
+		// Increment count only if frequency is 
+		// not same as previous 
+		if (i == 0 || v[i].second != v[i - 1].second) 
+			count++; 
+
+		if (count == k) 
+			return v[i].first; 
+	} 
+
+	return -1; 
+} 
+
+// Driver program 
+int main() 
+{ 
+	string str = "geeksforgeeks"; 
+	int k = 3; 
+	cout << sortByFreq(str, k); 
+	return 0; 
+} 
